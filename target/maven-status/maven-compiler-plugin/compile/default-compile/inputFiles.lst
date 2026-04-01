@@ -1,1 +1,13 @@
-/Users/ajaybhojani/myproject/src/main/java/com/rutvik/app/App.java
+/Users/rutvik/news/src/main/java/com/rutvik/app/BasePage.java
+/Users/rutvik/news/src/main/java/com/rutvik/app/BookmarkedNewsPage.java
+/Users/rutvik/news/src/main/java/com/rutvik/app/ExecutionSettings.java
+/Users/rutvik/news/src/main/java/com/rutvik/app/HistoryNewsPage.java
+/Users/rutvik/news/src/main/java/com/rutvik/app/LoginPage.java
+/Users/rutvik/news/src/main/java/com/rutvik/app/LogoutPage.java
+/Users/rutvik/news/src/main/java/com/rutvik/app/Main.java
+/Users/rutvik/news/src/main/java/com/rutvik/app/NavigationPage.java
+/Users/rutvik/news/src/main/java/com/rutvik/app/NewsPage.java
+/Users/rutvik/news/src/main/java/com/rutvik/app/NotificationsPage.java
+/Users/rutvik/news/src/main/java/com/rutvik/app/ProfilePage.java
+/Users/rutvik/news/src/main/java/com/rutvik/app/SearchPage.java
+/Users/rutvik/news/src/main/java/com/rutvik/app/UpdateCityPage.java

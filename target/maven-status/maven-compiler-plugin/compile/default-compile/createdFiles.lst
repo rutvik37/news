@@ -1,1 +1,13 @@
-com/rutvik/app/App.class
+com/rutvik/app/BasePage.class
+com/rutvik/app/SearchPage.class
+com/rutvik/app/NavigationPage.class
+com/rutvik/app/ProfilePage.class
+com/rutvik/app/NotificationsPage.class
+com/rutvik/app/ExecutionSettings.class
+com/rutvik/app/BookmarkedNewsPage.class
+com/rutvik/app/LogoutPage.class
+com/rutvik/app/UpdateCityPage.class
+com/rutvik/app/Main.class
+com/rutvik/app/LoginPage.class
+com/rutvik/app/NewsPage.class
+com/rutvik/app/HistoryNewsPage.class
