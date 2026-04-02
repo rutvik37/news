@@ -44,7 +44,6 @@ public final class Main {
         UpdateCityPage updateCityPage = new UpdateCityPage(page);
         NotificationsPage notificationsPage = new NotificationsPage(page);
         LogoutPage logoutPage = new LogoutPage(page);
-
         navigationPage.navigateToUrl(ExecutionSettings.BASE_URL);
         navigationPage.clickHome();
         navigationPage.clickVideoGallery();
