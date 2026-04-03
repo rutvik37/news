@@ -94,7 +94,6 @@ public class LoginPage {
         } catch (Exception ignored) {}
 
         if (otpSent) {
-            System.out.println("✓ OTP sent successfully message is displayed");
         } else if (rateLimited) {
             System.err.println("✗ OTP request was rate-limited. Please wait and try again later.");
         } else {

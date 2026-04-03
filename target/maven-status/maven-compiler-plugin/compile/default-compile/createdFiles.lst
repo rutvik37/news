@@ -1,9 +1,9 @@
 com/rutvik/app/BasePage.class
+com/rutvik/app/Main$ExecutionSettings.class
 com/rutvik/app/SearchPage.class
 com/rutvik/app/NavigationPage.class
 com/rutvik/app/ProfilePage.class
 com/rutvik/app/NotificationsPage.class
-com/rutvik/app/ExecutionSettings.class
 com/rutvik/app/BookmarkedNewsPage.class
 com/rutvik/app/LogoutPage.class
 com/rutvik/app/UpdateCityPage.class

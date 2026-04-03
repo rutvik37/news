@@ -1,7 +1,6 @@
 package com.rutvik.app;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
@@ -17,11 +16,11 @@ public class AppTest {
 
     @Test
     public void usesDefaultExecutionSettingsWhenNoOverridesExist() {
-        ExecutionSettings settings = ExecutionSettings.fromSystemProperties();
+        Main.ExecutionSettings settings = Main.ExecutionSettings.fromSystemProperties();
 
-        assertFalse(settings.isHeadless());
-        assertEquals(ExecutionSettings.DEFAULT_SLOW_MO_MS, settings.getSlowMoMs());
-        assertEquals(ExecutionSettings.DEFAULT_PAUSE_MS, settings.getPauseAfterFlowMs());
+        assertTrue(settings.isHeadless());
+        assertEquals(Main.DEFAULT_SLOW_MO_MS, settings.getSlowMoMs());
+        assertEquals(Main.DEFAULT_PAUSE_MS, settings.getPauseAfterFlowMs());
     }
 
     @Test
@@ -30,7 +29,7 @@ public class AppTest {
         System.setProperty("playwright.slowMoMs", "75");
         System.setProperty("playwright.pauseMs", "500");
 
-        ExecutionSettings settings = ExecutionSettings.fromSystemProperties();
+        Main.ExecutionSettings settings = Main.ExecutionSettings.fromSystemProperties();
 
         assertTrue(settings.isHeadless());
         assertEquals(75, settings.getSlowMoMs());
@@ -42,9 +41,9 @@ public class AppTest {
         System.setProperty("playwright.slowMoMs", "-10");
         System.setProperty("playwright.pauseMs", "invalid");
 
-        ExecutionSettings settings = ExecutionSettings.fromSystemProperties();
+        Main.ExecutionSettings settings = Main.ExecutionSettings.fromSystemProperties();
 
-        assertEquals(ExecutionSettings.DEFAULT_SLOW_MO_MS, settings.getSlowMoMs());
-        assertEquals(ExecutionSettings.DEFAULT_PAUSE_MS, settings.getPauseAfterFlowMs());
+        assertEquals(Main.DEFAULT_SLOW_MO_MS, settings.getSlowMoMs());
+        assertEquals(Main.DEFAULT_PAUSE_MS, settings.getPauseAfterFlowMs());
     }
 }

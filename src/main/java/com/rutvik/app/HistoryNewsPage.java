@@ -16,14 +16,14 @@ public class HistoryNewsPage extends BasePage {
         byRole(AriaRole.LINK, "History news icon History News").click();
     }
 
-    public void navigateToHistory() {
+    public void navigateToHistory(String historyUrl) {
         openMenu();
         try {
             clickHistoryNews();
             page.waitForURL("**/newshistory");
             waitForPageReady();
         } catch (PlaywrightException exception) {
-            navigateTo(ExecutionSettings.HISTORY_URL);
+            navigateTo(historyUrl);
         }
     }
 }
