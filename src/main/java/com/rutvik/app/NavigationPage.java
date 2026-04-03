@@ -3,6 +3,7 @@ package com.rutvik.app;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -23,6 +24,23 @@ public class NavigationPage extends BasePage {
         "Scorpio",
         "Pisces"
     };
+    private static final String[] TODAY_ASTRO_SIGNS = {
+        "Aries",
+        "Taurus",
+        "Gemini",
+        "Cancer",
+        "Leo",
+        "Virgo",
+        "Libra",
+        "Scorpio",
+        "Sagittarius",
+        "Capricorn",
+        "Aquarius",
+        "Pisces"
+    };
+    /** Today Astro dropdown options after Aries (index 0); Aries is default and not re-selected. */
+    private static final String[] TODAY_ASTRO_NON_ARIES =
+        Arrays.copyOfRange(TODAY_ASTRO_SIGNS, 1, TODAY_ASTRO_SIGNS.length);
 
     public NavigationPage(Page page) {
         super(page);
@@ -66,6 +84,50 @@ public class NavigationPage extends BasePage {
         page.waitForTimeout(1200);
         page.getByRole(AriaRole.TAB, new Page.GetByRoleOptions().setName("Annual Horoscope")).click();
         page.waitForTimeout(1200);
+
+        scrollSlowlyToTodayAstro();
+        page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Today Astro")).click();
+        page.waitForTimeout(1200);
+        // Aries is already open by default — do not select it again; pick 2 random other signs only.
+        String selectedSign = "Aries";
+        String[] twoMoreSigns = pickTwoRandomDistinctNonAries();
+        System.out.println(
+            "Today Astro: keeping default Aries; opening 2 random signs -> "
+                + twoMoreSigns[0]
+                + ", "
+                + twoMoreSigns[1]
+        );
+        for (String sign : twoMoreSigns) {
+            page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(selectedSign)).click();
+            page.waitForTimeout(800);
+            page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName(sign)).click();
+            System.out.println("Today Astro sign selected: " + sign);
+            page.waitForTimeout(1200);
+            selectedSign = sign;
+        }
+    }
+
+    private static String[] pickTwoRandomDistinctNonAries() {
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+        int firstIndex = random.nextInt(TODAY_ASTRO_NON_ARIES.length);
+        int secondIndex;
+        do {
+            secondIndex = random.nextInt(TODAY_ASTRO_NON_ARIES.length);
+        } while (secondIndex == firstIndex);
+        return new String[] {
+            TODAY_ASTRO_NON_ARIES[firstIndex],
+            TODAY_ASTRO_NON_ARIES[secondIndex]
+        };
+    }
+
+    private void scrollSlowlyToTodayAstro() {
+        Locator todayAstroHeading = page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Today Astro"));
+        for (int step = 0; step < 48 && !todayAstroHeading.isVisible(); step++) {
+            page.mouse().wheel(0, 320);
+            page.waitForTimeout(130);
+        }
+        todayAstroHeading.scrollIntoViewIfNeeded();
+        page.waitForTimeout(400);
     }
 
     public void clickOpenMenu() {
